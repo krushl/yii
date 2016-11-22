@@ -103,7 +103,7 @@ class CRedisCache extends CCache
 	 */
 	protected function releaseSocket()
 	{
-			stream_socket_shutdown($this->_socket, STREAM_SHUT_RDWR);
+			@stream_socket_shutdown($this->_socket, STREAM_SHUT_RDWR);
 			$this->_socket = null;
 	}
 
@@ -128,7 +128,7 @@ class CRedisCache extends CCache
 	 */
 	public function executeCommand($name,$params=array())
 	{
-		if($this->_socket===null)
+		if(!is_resource($this->_socket))
 			$this->connect();
 
 		array_unshift($params,$name);
@@ -138,8 +138,8 @@ class CRedisCache extends CCache
 
 		try {
 			fwrite($this->_socket, $command);
-		} catch(\Exception $e) {
-			\Yii::log(
+		} catch(Exception $e) {
+			Yii::log(
 				"Got error: '" . $e->getMessage() . "', reinit connection",
 				CLogger::LEVEL_INFO,
 				'system.caching.CRedisCache'
