@@ -1,4 +1,4 @@
-         Upgrading Instructions for Yii Framework v1.1.18
+         Upgrading Instructions for Yii Framework v1.1.19
          ================================================
 
 !!!IMPORTANT!!!
@@ -18,6 +18,12 @@ General upgrade instructions
   issues to Yii issue tracker.
 
 
+Upgrading from v1.1.18
+----------------------
+
+If you are outputting validation errors directly without using `CHtml` or `CActiveForm`, make sure
+to encode them properly depending on context you are outputting them into.
+
 Upgrading from v1.1.17
 ----------------------
 
@@ -27,6 +33,8 @@ Upgrading from v1.1.16
 ----------------------
 
 - If you're using CApcCache with APCu, set `useApcu` to `true` in the component config.
+- Undocumented usage of regular expressions outside parameters in URL rules was considered a bug (#3348). Regular
+  expressions are now escaped properly so if you rely on previous behavior, please update your code.
 
 Upgrading from v1.1.15
 ----------------------
