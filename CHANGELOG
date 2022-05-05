@@ -1,5 +1,43 @@
-﻿                   Yii Framework Change Log
+                   Yii Framework Change Log
                    ========================
+
+Version 1.1.25 December 13, 2021
+--------------------------------
+
+- Bug #4226: Fix for Gii diff displaying "reset() expects parameter 1 to be array, integer given" (LeoZandvliet, marcovtwout)
+- Bug #4369: PHP 8.0 compatibility: Fix warning "Only the first byte will be assigned to the string offset" when generating code with Gii (marcovtwout)
+- Bug #4374: Fix for createUpdateCommand which did not accept just a table name when using MSSQL (c-schmitz)
+- Bug #4380: Prevent fatal errors while validating CSRF token of malformed requests (rob006)
+- Bug #4382: PHP 8.0 compatibility: Fix CFileLogRoute throwing TypeError when logfile cannot be opened (marcovtwout)
+
+Version 1.1.24 June 7, 2021
+--------------------------------
+
+- Bug #4339: "There is no active transaction" when transaction is autocommitted (twisted1919)
+- Bug #4343: Fix "driver does not support quoting" when using the driver pdo_odbc (xpohoc69)
+- Bug #4355: Fix errorhandler missing backtrace entries (georaldc, marcovtwout)
+- Enh #4349: Added CHtml option to omit type attribute from <script> tag (mohamedmalki, marcovtwout)
+- Enh #4351: Added CHtml option to omit CDATA wrapper from <script> and <style> contents (marcovtwout)
+- Enh #4354: Allow to set log file permissions for CFileLogRoute (jdayamx)
+- Chg #4344: Upgraded jQuery to 1.12.4 (marcovtwout)
+- Chg #4344: Upgraded jQuery UI to 1.12.1 (marcovtwout)
+
+Version 1.1.23 December 2, 2020
+-------------------------------
+
+- Bug #4291: The scheme (protocol) is deleted when validateIDN is enabled after validation (Argevollen)
+- Bug #4306: Add PHP 8 support (samdark)
+- Bug #4310: Items on memcache won't expire due to memcache difference in internal clock (nikolasr200)
+- Bug #4325: Add support for unicode strings beyond the BMP (like emojies) in `CJavaScript::encode()` (marcovtwout)
+- Bug: Fix CFileHelper::findFiles() to use correct directory separator under Windows (samdark)
+- Enh #4305: PHP 7.3 compatibility: Support giving cookies a SameSite=None attribute value (tomfotherby)
+- Enh #4308: PHP 7.3 compatibility: Add `samesite` as a session cookie option (tomfotherby)
+- Enh #4314: Exceptions thrown while loading fixtures now contain details about the error location (BBoom)
+- Enh #4314: Missing fixture files now throw exceptions (BBoom)
+- Enh #4315: Added change triggers to clickable checkbox rows in grid views, allowing other script to react to the changed checkbox states (BBoom)
+- Enh #4317: Added special option 'encode' to `$htmlOptions` argument in `CHtml::errorSummary` and `CHtml::error` (shidenko97)
+- Enh #4323: Add PostgreSQL 12 support (bio, d4rkstar, marcovtwout)
+- Chg #4293: Updated HTMLPurifier to version 4.13.0 (https://github.com/ezyang/htmlpurifier/blob/v4.13.0/NEWS) (marcovtwout)
 
 Version 1.1.22 January 16, 2020
 -------------------------------
@@ -7,34 +45,35 @@ Version 1.1.22 January 16, 2020
 - Bug #4256: PHP 7 compatibility: PHP4 style constructor in Pear/Text/Diff3.php (kenguest)
 - Bug #4256: PHP 7 compatibility: Fixed deprecated usage of create_function() in markdown.php (samdark)
 - Bug #4261: PHP 7.2 compatibility: INTL_IDNA_VARIANT_2003 has been depreacated (machour)
-- Enh #4273: PHP 7.3 compatibility: Add "sameSite" support for cookies (thekonz)
+- Bug #4261: Updated HTMLPurifier to version 4.10.0 (https://github.com/ezyang/htmlpurifier/blob/v4.10.0/NEWS) (machour)
 - Bug #4279: PHP 7.4 compatibility: Drop use of accessing string offsets using curly braces (kenguest)
+- Enh #4273: PHP 7.3 compatibility: Add "sameSite" support for cookies (thekonz)
 
 Version 1.1.21 April 2, 2019
 ----------------------------
 
 - Bug #4220: Fixed PHP 7.2 incompatibility caused by the use of `create_function` in CHttpRequest and CProfileLogRoute (martinpetrasch, freezy-sk)
+- Bug #4227: Fixed PHPUnit 6 compatibility (gianniszach)
 - Bug #4229: Remove deprecation errors from framework/web/js/source/jquery.yiiactiveform.js when using jQuery 3.1.1 (kenguest)
 - Bug #4234: CVE-2018-14773. Drop support for HTTP_X_REWRITE_URL (kenguest)
-- Chg #4236: Freeze session before changing ini settings to be compatible with PHP 7.2 (vxk7m)
 - Bug #4238: Fixed intolerance to nulls in `CJavaScript::quote()` (stevoh6, ddziaduch)
-- Bug #4227: Fixed PHPUnit 6 compatibility (gianniszach)
+- Chg #4236: Freeze session before changing ini settings to be compatible with PHP 7.2 (vxk7m)
 
 Version 1.1.20 July 6, 2018
 ---------------------------
 
-- Bug #4182: CSecurityManager requires mcrypt extension to work, and for PHP 7.2 we need to install it from pecl (sergey-dryabzhinsky)
 - Bug #4162: Adjusted Zend Escaper to be compatible with PHP <5.3 and fixed usage of non-existing Exceptions (cebe)
 - Bug #4167: Fixed PHP 7.2 incompatibility of "count()" in `CActiveFinder` and CController::renderDynamic() (softark, ThePepster)
 - Bug #4168: Fixed `CDbHttpSession` PHP 7.1 compatibility (csears123)
 - Bug #4179: Fixed MariaDB 10.2 current_timestamp() (yaBliznyk)
+- Bug #4182: CSecurityManager requires mcrypt extension to work, and for PHP 7.2 we need to install it from pecl (sergey-dryabzhinsky)
 - Bug #4191: Fixed "Headers already sent." error in CHttpSession (daniel1302)
 - Bug #4191: Fixed "CHtml::value() behaves differently for objects" for PHP 7.2 (daniel1302)
 - Bug #4197: Fixed PHP 7.2 assert with string argument is deprecated warning using Gii (ThePepster)
+- Bug #4198: Fixed PHP 7.2 SQLSRV lastInsertId (agusdrs)
 - Bug #4203: Fixed `CHttpCacheFilter::sendCacheControlHeader` PHP 7.2 compatibility (b1rdex)
 - Enh #4191: Added option for filter classes loaded by YiiBase autoloader (daniel1302)
 - Chg #4160: Updated HTMLPurifier to version 4.9.3 (takobell)
-- Bug #4198: Fixed PHP 7.2 SQLSRV lastInsertId (agusdrs)
 
 Version 1.1.19 June 8, 2017
 ---------------------------
